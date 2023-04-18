@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculadora de sueldo de vendedor</title>
+</head>
+<body>
+	<h1>Calculadora de sueldo de vendedor</h1>
+	<form>
+		<label for="importe_total_vendido">Importe total vendido del mes:</label>
+		<input type="number" id="importe_total_vendido" name="importe_total_vendido"><br><br>
+
+		<label for="cantidad_hijos_escolar">Cantidad de hijos en edad escolar:</label>
+		<input type="number" id="cantidad_hijos_escolar" name="cantidad_hijos_escolar"><br><br>
+
+		<input type="button" value="Calcular sueldo" onclick="calcularSueldo()"><br><br>
+
+		<label for="comision">Comisión:</label>
+		<input type="text" id="comision" name="comision" readonly><br><br>
+
+		<label for="bonificacion">Bonificación:</label>
+		<input type="text" id="bonificacion" name="bonificacion" readonly><br><br>
+
+		<label for="sueldo_bruto">Sueldo bruto:</label>
+		<input type="text" id="sueldo_bruto" name="sueldo_bruto" readonly><br><br>
+
+		<label for="descuento">Descuento:</label>
+		<input type="text" id="descuento" name="descuento" readonly><br><br>
+
+		<label for="sueldo_neto">Sueldo neto:</label>
+		<input type="text" id="sueldo_neto" name="sueldo_neto" readonly><br><br>
+	</form>
+
+	<script>
+		function calcularSueldo() {
+			// Obtener los valores ingresados por el usuario
+			var importe_total_vendido = document.getElementById("importe_total_vendido").value;
+			var cantidad_hijos_escolar = document.getElementById("cantidad_hijos_escolar").value;
+
+			// Calcular la comisión y la bonificación
+			var comision = importe_total_vendido * 0.075;
+			var bonificacion = cantidad_hijos_escolar * 50;
+
+			// Calcular el sueldo bruto
+			var sueldo_basico = 600;
+			var sueldo_bruto = sueldo_basico + comision + bonificacion;
+
+			// Calcular el descuento y el sueldo neto
+			var descuento = sueldo_bruto * 0.11;
+			var sueldo_neto = sueldo_bruto - descuento;
+
+			// Mostrar los resultados en la página web
+			document.getElementById("comision").value = "S/." + comision;
+			document.getElementById("bonificacion").value = "S/." + bonificacion;
+			document.getElementById("sueldo_bruto").value="S/."+sueldo_bruto;
+            document.getElementById("descuento").value="S/."+descuento;
+            document.getElementById("sueldo_neto").value="S/."+sueldo_neto;}
+    </script>
+
+</body>
+</html>
